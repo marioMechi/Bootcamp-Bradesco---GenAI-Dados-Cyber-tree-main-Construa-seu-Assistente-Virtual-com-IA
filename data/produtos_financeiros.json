@@ -1,42 +1,312 @@
+```json
 [
   {
     "nome": "Tesouro Selic",
     "categoria": "renda_fixa",
+    "tipo": "titulo_publico",
     "risco": "baixo",
-    "rentabilidade": "100% da Selic",
+    "rentabilidade": {
+      "tipo": "pos_fixada",
+      "referencia": "Selic",
+      "percentual_referencia": "100% da Selic"
+    },
     "aporte_minimo": 30.00,
-    "indicado_para": "Reserva de emergência e iniciantes"
+    "liquidez": "D+1",
+    "liquidez_descricao": "Resgate antecipado disponível em dias úteis, sujeito às regras e preços do Tesouro Direto",
+    "impostos": {
+      "ir": {
+        "incide": true,
+        "tipo": "regressivo",
+        "aliquotas": [
+          {
+            "prazo_max_dias": 180,
+            "aliquota_percentual": 22.5
+          },
+          {
+            "prazo_min_dias": 181,
+            "prazo_max_dias": 360,
+            "aliquota_percentual": 20.0
+          },
+          {
+            "prazo_min_dias": 361,
+            "prazo_max_dias": 720,
+            "aliquota_percentual": 17.5
+          },
+          {
+            "prazo_min_dias": 721,
+            "aliquota_percentual": 15.0
+          }
+        ]
+      },
+      "iof": {
+        "incide": true,
+        "condicao": "Resgate nos primeiros 29 dias",
+        "tipo": "regressivo",
+        "base": "Rendimento"
+      }
+    },
+    "taxas": {
+      "custodia_b3_percentual_ano": 0.20,
+      "taxa_corretora": "Pode variar conforme a instituição"
+    },
+    "garantia": {
+      "fgc": false,
+      "descricao": "Título público federal, não coberto pelo FGC"
+    },
+    "indicado_para": [
+      "Reserva de emergência",
+      "Objetivos de curto e médio prazo",
+      "Investidores iniciantes",
+      "Perfil conservador"
+    ]
   },
   {
-    "nome": "CDB Liquidez Diária",
+    "nome": "CDB com Liquidez Diária",
     "categoria": "renda_fixa",
+    "tipo": "titulo_privado",
     "risco": "baixo",
-    "rentabilidade": "102% do CDI",
+    "rentabilidade": {
+      "tipo": "pos_fixada",
+      "referencia": "CDI",
+      "percentual": "Variável conforme banco e oferta",
+      "exemplo": "100% a 110% do CDI"
+    },
     "aporte_minimo": 100.00,
-    "indicado_para": "Quem busca segurança com rendimento diário"
+    "liquidez": "Diária",
+    "liquidez_descricao": "Resgate conforme as condições definidas pelo emissor",
+    "impostos": {
+      "ir": {
+        "incide": true,
+        "tipo": "regressivo",
+        "aliquotas": [
+          {
+            "prazo_max_dias": 180,
+            "aliquota_percentual": 22.5
+          },
+          {
+            "prazo_min_dias": 181,
+            "prazo_max_dias": 360,
+            "aliquota_percentual": 20.0
+          },
+          {
+            "prazo_min_dias": 361,
+            "prazo_max_dias": 720,
+            "aliquota_percentual": 17.5
+          },
+          {
+            "prazo_min_dias": 721,
+            "aliquota_percentual": 15.0
+          }
+        ]
+      },
+      "iof": {
+        "incide": true,
+        "condicao": "Resgate nos primeiros 29 dias",
+        "tipo": "regressivo",
+        "base": "Rendimento"
+      }
+    },
+    "taxas": {
+      "custodia": false,
+      "taxa_corretora": "Normalmente não há"
+    },
+    "garantia": {
+      "fgc": true,
+      "limite_por_instituicao": 250000.00,
+      "limite_global_4_anos": 1000000.00
+    },
+    "indicado_para": [
+      "Reserva de emergência",
+      "Liquidez diária",
+      "Investidores conservadores",
+      "Quem busca rendimento próximo ou superior ao CDI"
+    ]
   },
   {
-    "nome": "LCI/LCA",
+    "nome": "LCI",
     "categoria": "renda_fixa",
+    "tipo": "letra_de_credito_imobiliario",
     "risco": "baixo",
-    "rentabilidade": "95% do CDI",
+    "rentabilidade": {
+      "tipo": "pos_fixada",
+      "referencia": "CDI",
+      "percentual": "Variável conforme instituição e prazo",
+      "exemplo": "85% a 95% do CDI"
+    },
     "aporte_minimo": 1000.00,
-    "indicado_para": "Quem pode esperar 90 dias (isento de IR)"
+    "liquidez": "Conforme emissão",
+    "liquidez_descricao": "Pode possuir prazo mínimo e/ou carência antes do resgate",
+    "impostos": {
+      "ir": {
+        "incide": false,
+        "descricao": "Isento de IR para pessoa física, conforme legislação aplicável"
+      },
+      "iof": {
+        "incide": false,
+        "descricao": "Não há IOF sobre o rendimento como ocorre nas aplicações tributadas de renda fixa"
+      }
+    },
+    "taxas": {
+      "custodia": false
+    },
+    "garantia": {
+      "fgc": true,
+      "limite_por_instituicao": 250000.00,
+      "limite_global_4_anos": 1000000.00
+    },
+    "indicado_para": [
+      "Investidores conservadores",
+      "Objetivos de médio prazo",
+      "Quem pode manter o dinheiro até o vencimento",
+      "Quem busca rendimento isento de IR para pessoa física"
+    ]
   },
   {
-    "nome": "Fundo Multimercado",
-    "categoria": "fundo",
-    "risco": "medio",
-    "rentabilidade": "CDI + 2%",
-    "aporte_minimo": 500.00,
-    "indicado_para": "Perfil moderado que busca diversificação"
+    "nome": "LCA",
+    "categoria": "renda_fixa",
+    "tipo": "letra_de_credito_do_agronegocio",
+    "risco": "baixo",
+    "rentabilidade": {
+      "tipo": "pos_fixada",
+      "referencia": "CDI",
+      "percentual": "Variável conforme instituição e prazo",
+      "exemplo": "85% a 95% do CDI"
+    },
+    "aporte_minimo": 1000.00,
+    "liquidez": "Conforme emissão",
+    "liquidez_descricao": "Pode possuir prazo mínimo e/ou carência antes do resgate",
+    "impostos": {
+      "ir": {
+        "incide": false,
+        "descricao": "Isento de IR para pessoa física, conforme legislação aplicável"
+      },
+      "iof": {
+        "incide": false
+      }
+    },
+    "taxas": {
+      "custodia": false
+    },
+    "garantia": {
+      "fgc": true,
+      "limite_por_instituicao": 250000.00,
+      "limite_global_4_anos": 1000000.00
+    },
+    "indicado_para": [
+      "Investidores conservadores",
+      "Objetivos de médio prazo",
+      "Quem pode esperar o vencimento",
+      "Quem busca rendimento isento de IR para pessoa física"
+    ]
   },
   {
-    "nome": "Fundo de Ações",
-    "categoria": "fundo",
-    "risco": "alto",
-    "rentabilidade": "Variável",
-    "aporte_minimo": 100.00,
-    "indicado_para": "Perfil arrojado com foco no longo prazo"
+    "nome": "Tesouro IPCA+",
+    "categoria": "renda_fixa",
+    "tipo": "titulo_publico",
+    "risco": "baixo",
+    "rentabilidade": {
+      "tipo": "hibrida",
+      "formula": "IPCA + taxa fixa definida no momento da compra",
+      "descricao": "Proteção contra a inflação se mantido até o vencimento"
+    },
+    "aporte_minimo": 30.00,
+    "liquidez": "D+1",
+    "liquidez_descricao": "Pode ser vendido antes do vencimento, mas o preço pode variar conforme as condições de mercado",
+    "impostos": {
+      "ir": {
+        "incide": true,
+        "tipo": "regressivo",
+        "aliquotas": [
+          {
+            "prazo_max_dias": 180,
+            "aliquota_percentual": 22.5
+          },
+          {
+            "prazo_min_dias": 181,
+            "prazo_max_dias": 360,
+            "aliquota_percentual": 20.0
+          },
+          {
+            "prazo_min_dias": 361,
+            "prazo_max_dias": 720,
+            "aliquota_percentual": 17.5
+          },
+          {
+            "prazo_min_dias": 721,
+            "aliquota_percentual": 15.0
+          }
+        ]
+      },
+      "iof": {
+        "incide": true,
+        "condicao": "Resgate nos primeiros 29 dias"
+      }
+    },
+    "taxas": {
+      "custodia_b3_percentual_ano": 0.20
+    },
+    "garantia": {
+      "fgc": false
+    },
+    "indicado_para": [
+      "Longo prazo",
+      "Proteção contra inflação",
+      "Planejamento de aposentadoria",
+      "Investidores que podem manter até o vencimento"
+    ]
+  },
+  {
+    "nome": "Tesouro Prefixado",
+    "categoria": "renda_fixa",
+    "tipo": "titulo_publico",
+    "risco": "baixo",
+    "rentabilidade": {
+      "tipo": "prefixada",
+      "formula": "Taxa fixa definida no momento da compra"
+    },
+    "aporte_minimo": 30.00,
+    "liquidez": "D+1",
+    "liquidez_descricao": "Venda antecipada sujeita à marcação a mercado",
+    "impostos": {
+      "ir": {
+        "incide": true,
+        "tipo": "regressivo",
+        "aliquotas": [
+          {
+            "prazo_max_dias": 180,
+            "aliquota_percentual": 22.5
+          },
+          {
+            "prazo_min_dias": 181,
+            "prazo_max_dias": 360,
+            "aliquota_percentual": 20.0
+          },
+          {
+            "prazo_min_dias": 361,
+            "prazo_max_dias": 720,
+            "aliquota_percentual": 17.5
+          },
+          {
+            "prazo_min_dias": 721,
+            "aliquota_percentual": 15.0
+          }
+        ]
+      },
+      "iof": {
+        "incide": true,
+        "condicao": "Resgate nos primeiros 29 dias"
+      }
+    },
+    "taxas": {
+      "custodia_b3_percentual_ano": 0.20
+    },
+    "garantia": {
+      "fgc": false
+    },
+    "indicado_para": [
+      "Investidores que desejam taxa prefixada",
+      "Objetivos de médio e longo prazo"
+    ]
   }
 ]
+```
