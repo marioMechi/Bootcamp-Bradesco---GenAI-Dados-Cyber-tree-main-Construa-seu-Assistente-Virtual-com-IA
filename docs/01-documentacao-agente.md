@@ -60,7 +60,7 @@ flowchart TD
 |------------|-----------|
 | Interface | Streamlit |
 | LLM | Ollama |
-| Base de Conhecimento | CSV/JSON |
+| Base de Conhecimento | CSV/JSON na pasta data|
 | Validação | Checagem de alucinações |
 
 ---
@@ -69,10 +69,10 @@ flowchart TD
 
 ### Estratégias Adotadas
 
-- [ ] [ex: Agente só responde com base nos dados fornecidos]
-- [ ] [ex: Respostas incluem fonte da informação]
-- [ ] [ex: Quando não sabe, admite e redireciona]
-- [ ] [ex: Não faz recomendações de investimento sem perfil do cliente]
+- [ ] Agente só responde com base nos dados fornecidos]
+- [ ] Respostas incluem fonte da informação]
+- [ ] Quando não sabe, admite e redireciona]
+- [ ] Ele explica os calculos comparando as opções
 
 ### Limitações Declaradas
 > O que o agente NÃO faz?
