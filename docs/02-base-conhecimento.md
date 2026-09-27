@@ -29,12 +29,7 @@ Modifiquei os produtos financeiros para produtos com data atuais e adicionei inv
 ### Como os dados são carregados?
 > Descreva como seu agente acessa a base de conhecimento.
 
-[ex: Os JSON/CSV são carregados no início da sessão e incluídos no contexto do prompt]
-
-### Como os dados são usados no prompt?
-> Os dados vão no system prompt? São consultados dinamicamente?
-
-"""python
+```python
 import pandas as pd
 import json
 import os
@@ -89,9 +84,20 @@ if __name__ == "__main__":
     # --- JSONs ---
     dados_perfil, df_perfil = importar_json("perfil_investidor.json")
     dados_produtos, df_produtos = importar_json("produtos_financeiros.json")
- 
+```
 
-"""
+### Como os dados são usados no prompt?
+> Os dados vão no system prompt? São consultados dinamicamente?
+```text
+DADOS DO CLIENTE:
+historico_atendimento.csv
+PERFIL DO CLEINTE:
+perfil_investidor.json
+TRANSAÇÕES DO CLIENTE:
+transacoes.csv
+PRODUTOS OFERECIDOS:
+produtos_financeiros.json
+```
 
 ## Exemplo de Contexto Montado
 
