@@ -20,7 +20,7 @@ Descreva se usou os arquivos da pasta `data`, por exemplo:
 
 > Você modificou ou expandiu os dados mockados? Descreva aqui.
 
-[Sua descrição aqui]
+Modifiquei os produtos financeiros para produtos com data atuais e adicionei investimentos de renda fixa.
 
 ---
 
@@ -34,9 +34,64 @@ Descreva se usou os arquivos da pasta `data`, por exemplo:
 ### Como os dados são usados no prompt?
 > Os dados vão no system prompt? São consultados dinamicamente?
 
-[Sua descrição aqui]
+"""python
+import pandas as pd
+import json
+import os
+ 
+# Ajuste este caminho para a pasta onde estão os arquivos
+PASTA = "."  # ex: "./dados" ou "/home/usuario/dados"
+ 
+ 
+def importar_csv(nome_arquivo, **kwargs):
+    """Importa um arquivo CSV como DataFrame do pandas."""
+    caminho = os.path.join(PASTA, nome_arquivo)
+    try:
+        df = pd.read_csv(caminho, **kwargs)
+        print(f"[OK] {nome_arquivo}: {df.shape[0]} linhas, {df.shape[1]} colunas")
+        return df
+    except FileNotFoundError:
+        print(f"[ERRO] Arquivo não encontrado: {caminho}")
+        return None
+    except Exception as e:
+        print(f"[ERRO] Falha ao importar {nome_arquivo}: {e}")
+        return None
+ 
+ 
+def importar_json(nome_arquivo):
+    """Importa um arquivo JSON. Retorna dict/list (bruto) e, se possível, um DataFrame."""
+    caminho = os.path.join(PASTA, nome_arquivo)
+    try:
+        with open(caminho, "r", encoding="utf-8") as f:
+            dados = json.load(f)
+        print(f"[OK] {nome_arquivo} carregado ({type(dados).__name__})")
+ 
+        # Tenta converter para DataFrame quando fizer sentido
+        try:
+            df = pd.json_normalize(dados)
+        except Exception:
+            df = None
+ 
+        return dados, df
+    except FileNotFoundError:
+        print(f"[ERRO] Arquivo não encontrado: {caminho}")
+        return None, None
+    except json.JSONDecodeError as e:
+        print(f"[ERRO] JSON inválido em {nome_arquivo}: {e}")
+        return None, None
+ 
+ 
+if __name__ == "__main__":
+    # --- CSVs ---
+    df_historico = importar_csv("historico_atendimento.csv")
+    df_transacoes = importar_csv("transacoes.csv")
+ 
+    # --- JSONs ---
+    dados_perfil, df_perfil = importar_json("perfil_investidor.json")
+    dados_produtos, df_produtos = importar_json("produtos_financeiros.json")
+ 
 
----
+"""
 
 ## Exemplo de Contexto Montado
 
