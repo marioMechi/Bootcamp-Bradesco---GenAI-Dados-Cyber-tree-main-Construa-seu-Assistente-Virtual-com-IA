@@ -96,8 +96,7 @@ Para fazer uma recomendação adequada, preciso entender melhor seu perfil. Voc�
 ---
 
 ## Observações e Aprendizados
-
-> Registre aqui ajustes que você fez nos prompts e por quê.
+O GPT, Copilot e Claude obedecerão o prompt apenas quando pedi para ler e aceitar as instruções dele. O Claude respondeu minhas perguntas conforme solicitado no prompt exatamente, já o Copilot apesar de responder não obedeceu o formato de reposta do prompt. O GPT além de me responder no formato que eu queria propôs interação em que eu escolhia os valores ele simulava pra mim os resultados. O Gemini respondeu assim que carreguei o prompt sem precisar deu especificar para obedecer o prompt. A resposta dele foi do formato especificado no prompt.
 
 - Fiz ajuste para ele recomendar o investimento conforme minha regra de renda fixa. 
 - Coloquei um exemplo de resposta que eu quero que ele siga.
