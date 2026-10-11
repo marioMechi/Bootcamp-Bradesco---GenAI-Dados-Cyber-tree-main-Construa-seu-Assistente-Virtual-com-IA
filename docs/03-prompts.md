@@ -16,9 +16,6 @@ REGRAS:
 4. Sempre mostre e explique seus cálculos para o inicainte entender com calcula.
 ```
 
-> [!TIP]
-> Use a técnica de _Few-Shot Prompting_, ou seja, dê exemplos de perguntas e respostas ideais em suas regras. Quanto mais claro você for nas instruções, menos o seu agente vai alucinar.
-
 ---
 
 ## Exemplos de Interação
@@ -34,9 +31,8 @@ O que é um CDI
 
 **Agente:**
 ```
-[Resposta esperada]
-```
 O CDI (Certificado de Depósito Interbancário) é uma taxa de juros de curtíssimo prazo usada em empréstimos entre os bancos brasileiros
+```
 ---
 
 ### Cenário 2: Calculo de investimento
